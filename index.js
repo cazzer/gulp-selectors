@@ -6,10 +6,7 @@ var through = require('through2'),
 var expressions = {
 	selectorMatch: /(\.|#)(-?[_a-zA-Z]+[_\w-]*)\s*;*}*/g,
 	selectorNameMatch: /(-?[_a-zA-Z]+[_\w-]*)/g,
-	selectorAttributeMatch: /(class|id|for)\s*=\s*["'](-?[_a-zA-Z]+[_\w-\s]*)["']/g,
-	selectorStringMatch: function(selector) {
-		return new RegExp('"' + selector + '"|' + "'" + selector + "'", 'g');
-	}
+	selectorAttributeMatch: /(class|id|for)\s*=\s*["'](-?[_a-zA-Z]+[_\w-\s]*)["']/g
 };
 
 module.exports = function() {
@@ -66,8 +63,7 @@ module.exports = function() {
 	 * @returns {reducedFile String}
 	 */
 	function replaceCssSelectors(file) {
-		var className,
-			classNameMatch = expressions.selectorMatch,
+		var classNameMatch = expressions.selectorMatch,
 			nameMatch = expressions.selectorNameMatch;
 
 		return file.replace(classNameMatch, function(match) {
@@ -117,24 +113,6 @@ module.exports = function() {
 					}
 				});
 		});
-	}
-
-	/**
-	 * Will replace all exact occurrences of all class names from the library which are present as
-	 * strings.
-	 * e.g. "className" and 'className' will be matched but "className anotherClass" will not
-	 *
-	 * @param file String
-	 * @returns {reducedFile String}
-	 */
-	function replaceJsSelectors(file) {
-		for (var className in classLibrary) {
-			var matcher = expressions.selectorStringMatch(className);
-			file = file.replace(matcher, function(match) {
-				return match[0] + classLibrary[className].shortName + match[match.length - 1];
-			});
-		}
-		return file;
 	}
 
 	return through.obj(miniSelectors);
