@@ -1,0 +1,24 @@
+{
+  "name": "gulp-mini-selectors",
+  "description": "Minify CSS selectors.",
+  "version": "0.0.1",
+  "author": {
+    "name": "Caleb Brewer",
+    "email": "calebthebrewer@gmail.com"
+  },
+  "dependencies": {
+    "gulp-util": "~3.0.1",
+    "through2": ">=0.6.1 <1.0.0-0"
+  },
+  "homepage": "https://github.com/calebthebrewer/gulp-mini-selectors",
+  "keywords": [
+    "gulp plugin"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/calebthebrewer/gulp-mini-selectors.git"
+  },
+  "readmeFilename": "README.md"
+}
