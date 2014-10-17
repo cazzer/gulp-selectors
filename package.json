@@ -20,5 +20,11 @@
     "type": "git",
     "url": "https://github.com/calebthebrewer/gulp-mini-selectors.git"
   },
-  "readmeFilename": "README.md"
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "vows": "~0.7.0"
+  },
+  "scripts": {
+    "test": "vows --spec"
+  }
 }

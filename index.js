@@ -1,21 +1,12 @@
 'use strict';
 var through = require('through2'),
 	PluginError = require('gulp-util/lib/PluginError'),
+	expressions = require('utils/expressions'),
+	getShortname = require('utils/get-shortname'),
+	libs = require('utils/libraries'),
 	pluginName = 'mini-selectors';
 
-var expressions = {
-	selectorMatch: /(\.|#)(-?[_a-zA-Z]+[_\w-]*)\s*;*}*/g,
-	selectorNameMatch: /(-?[_a-zA-Z]+[_\w-]*)/g,
-	selectorAttributeMatch: /(class|id|for)\s*=\s*["'](-?[_a-zA-Z]+[_\w-\s]*)["']/g
-};
-
 module.exports = function() {
-
-	var classLibrary = {},
-		shortClassLibrary = [],
-		idLibrary = {},
-		shortIdLibrary = [];
-
 	/**
 	 * Main task for uglify classes. Processes files based on type.
 	 *
@@ -63,8 +54,8 @@ module.exports = function() {
 	 * @returns {reducedFile String}
 	 */
 	function replaceCssSelectors(file) {
-		var classNameMatch = expressions.selectorMatch,
-			nameMatch = expressions.selectorNameMatch;
+		var classNameMatch = expressions.selector,
+			nameMatch = expressions.selectorName;
 
 		return file.replace(classNameMatch, function(match) {
 			//exclude property values (matches ending in ';')
@@ -78,9 +69,9 @@ module.exports = function() {
 			return match.replace(nameMatch, function(selector) {
 				switch (selectorType) {
 					case '.':
-						return getShortname(selector, classLibrary, shortClassLibrary);
+						return getShortname(selector, libs.classLibrary, libs.shortClassLibrary);
 					case '#':
-						return getShortname(selector, idLibrary, shortIdLibrary);
+						return getShortname(selector, libs.idLibrary, libs.shortIdLibrary);
 					default:
 						//probably don't touch something we don't understand
 						console.log(selector);
@@ -98,16 +89,17 @@ module.exports = function() {
 	 * @returns {reducedFile String}
 	 */
 	function replaceHtmlSelectors(file) {
-		return file.replace(expressions.selectorAttributeMatch, function(attributes) {
+		return file.replace(expressions.selectorAttribute, function(attributes) {
 			var attribute = attributes.split('=');
 			return attribute[0] + '=' + attribute[1]
-				.replace(expressions.selectorNameMatch, function(selectorName) {
+				.replace(expressions.selectorName, function(selectorName) {
 					switch (attribute[0]) {
 						case 'class':
-							return getShortname(selectorName, classLibrary, shortClassLibrary);
+							return getShortname(
+								selectorName, libs.classLibrary, libs.shortClassLibrary);
 						case 'id':
 						case 'for':
-							return getShortname(selectorName, idLibrary, shortIdLibrary);
+							return getShortname(selectorName, libs.idLibrary, libs.shortIdLibrary);
 						default:
 
 					}
@@ -117,47 +109,3 @@ module.exports = function() {
 
 	return through.obj(miniSelectors);
 };
-
-/**
- * Helper function for getting a shortname. Generates a new shortname if it does not exist.
- *
- * @param selector String representing the name of the item to get a shortname for
- * @param fullLibrary Object {selector: {shortName: shortName}, ...}
- * @param shortLibrary Array [shortName, ...]
- * @returns {shortName String} From library or from generator
- */
-function getShortname(selector, fullLibrary, shortLibrary) {
-	var shortName;
-
-	if (!fullLibrary[selector]) {
-		//check if the shortname is in the library
-		shortName = generateShortname(shortLibrary.length);
-		fullLibrary[selector] = {
-			shortName: shortName
-		}
-		shortLibrary.push(shortName);
-	} else {
-		//grab the shortname that already exists
-		shortName = fullLibrary[selector].shortName;
-	}
-
-	return shortName;
-}
-
-/**
- * Helper function for generating shortnames based on an alphabetic library.
- *
- * @param seed Integer
- * @returns {string Shortname}
- */
-function generateShortname(seed) {
-	var library = 'abcdefghijklmnopqrstuvwxyz',
-		libraryLength = library.length,
-		prefix = '';
-	//break the seed down if it is larger than the library
-	if (seed >= libraryLength) {
-		prefix = generateShortname(Math.floor(seed / libraryLength) - 1);
-	}
-	//return the prefixed shortname
-	return prefix + library[seed % libraryLength];
-}
