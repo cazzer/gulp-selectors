@@ -89,7 +89,7 @@ module.exports = function() {
 	 * @returns {reducedFile String}
 	 */
 	function replaceHtmlSelectors(file) {
-		return file.replace(expressions.selectorAttribute, function(attributes) {
+		return file.replace(expressions.elementAttribute, function(attributes) {
 			var attribute = attributes.split('=');
 			return attribute[0] + '=' + attribute[1]
 				.replace(expressions.selectorName, function(selectorName) {

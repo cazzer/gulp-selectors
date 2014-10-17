@@ -3,75 +3,56 @@ var vows = require('vows'),
 	expressions = require('../utils/expressions');
 
 vows.describe('Expressions: selector').addBatch({
-
 	'An id selector': {
-		topic: function() {
-			return "#selector".match(expressions.selector).length;
-		},
+		topic: '#selector'.match(expressions.selector),
 		'should return a match': function(topic) {
-			assert.equal(topic, 1);
+			assert.equal(topic.length, 1);
 		}
 	},
 	'An class selector': {
-		topic: function() {
-			return ".selector".match(expressions.selector).length;
-		},
+		topic: '.selector'.match(expressions.selector),
 		'should return one match': function(topic) {
-			assert.equal(topic, 1);
+			assert.equal(topic.length, 1);
 		}
 	},
 	'Nested class selectors': {
-		topic: function() {
-			return ".selector .child".match(expressions.selector).length;
-		},
+		topic: '.selector .child'.match(expressions.selector),
 		'should return two matches': function(topic) {
-			assert.equal(topic, 2);
+			assert.equal(topic.length, 2);
 		}
 	},
 	'A pseudo selector': {
-		topic: function() {
-			return ":hover".match(expressions.selector);
-		},
+		topic: ':hover'.match(expressions.selector),
 		'should not return a match': function(topic) {
 			assert.equal(topic, null);
 		}
 	},
 	'A tag selector': {
-		topic: function() {
-			return "body".match(expressions.selector);
-		},
+		topic: 'body'.match(expressions.selector),
 		'should return a match': function(topic) {
 			assert.equal(topic, null);
 		}
 	},
 	'A hash value': {
-		topic: function() {
-			return "#e6e6e6;".match(expressions.selector)[0];
-		},
+		topic: '#e6e6e6;'.match(expressions.selector),
 		'should return a match which include the semicolon': function(topic) {
-			assert.equal(topic, "#e6e6e6;");
+			assert.equal(topic[0], '#e6e6e6;');
 		}
 	},
 	'A hash value': {
-		topic: function() {
-			return "#e6e6e6}".match(expressions.selector)[0];
-		},
+		topic: '#e6e6e6}'.match(expressions.selector),
 		'should return a match which include the close bracket': function(topic) {
-			assert.equal(topic, "#e6e6e6}");
+			assert.equal(topic[0], '#e6e6e6}');
 		}
 	},
 	'A string beginning with a number': {
-		topic: function() {
-			return "#666".match(expressions.selector);
-		},
+		topic: '#666'.match(expressions.selector),
 		'should not return a match': function(topic) {
 			assert.equal(topic, null);
 		}
 	},
 	'A string beginning with a weird character': {
-		topic: function() {
-			return "#:selector".match(expressions.selector);
-		},
+		topic: '#:selector'.match(expressions.selector),
 		'should not return a match': function(topic) {
 			assert.equal(topic, null);
 		}
