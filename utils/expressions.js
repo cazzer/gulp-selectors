@@ -52,5 +52,14 @@ module.exports = {
 	 * - name="selector"
 	 * - href="selector"
 	 */
-	elementAttribute: /(class|id|for)\s*=\s*["'](-?[_a-zA-Z]+[_\w-\s]*)["']/g
+	elementAttribute: /(class|id|for)\s*=\s*["'](-?[_a-zA-Z]+[_\w-\s]*)["']/g,
+	/**
+	 * Builds a regular expression which will match a quoted string.
+	 *
+	 * @param name String of selector name
+	 * @returns {RegExp}
+	 */
+	jsString: function(name) {
+		return new RegExp('[\'|"]' + name + '[\'|"]', 'g')
+	}
 };

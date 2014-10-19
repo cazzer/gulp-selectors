@@ -1,4 +1,4 @@
-var generateShortname = require('utils/generate-shortname');
+var generateShortname = require('./generate-shortname');
 
 /**
  * Helper function for getting a shortname. Generates a new shortname if it does not exist.

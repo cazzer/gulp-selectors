@@ -3,5 +3,7 @@
 > Minify those pesky selector names down to nothing with this fancy gulp plugin. Minified selectors
 will be applied consistently across all style, html, and js files piped into it.
 
+*Currently this plugin requires JavaScript files to be loaded last.*
+
 [travis-url]: https://travis-ci.org/calebthebrewer/gulp-mini-selectors
 [travis-image]: https://travis-ci.org/calebthebrewer/gulp-mini-selectors.svg?branch=master
