@@ -54,6 +54,34 @@ module.exports = {
 	 */
 	elementAttribute: /(class|id|for)\s*=\s*["'](-?[_a-zA-Z]+[_\w-\s]*)["']/g,
 	/**
+	 * Matches ID Values
+	 * 
+	 * All values can be single values or lists and lists can be either comma separated (each val is surrounded by single or double quotes OR a space separated list with not internal quotes (only quotes at beginning and end).
+	 * .getElementById 
+	 * .id
+	 * $ Only matches values with "#"
+	 * jQuery Only matches values with "#"
+	 * .attr This has a known bug. There is no way to differentiate the leading "class" from "id" in attr without look-behind, which javascript does not support. Therefore, all matches using this regex need to be filtered to remove results which are lists that have "class" as the first value.
+	 */
+	idList: /(?:\$|jQuery|(?:\.(?:getElementById|id|jQuery|attr)))\s*[\(=]{1}\s*(["']{1}#?-?[_a-zA-Z]+[_\w-]*(?:(?:(?:["']{1}\s*,\s*["']{1})|\s+){1}#?-?[_a-zA-Z]+[_\w-]*)*["']{1})/,
+	/**
+	 * Matches Class Values
+	 *
+	 * All values can be single values or lists and lists can be either comma separated (each val is surrounded by single or double quotes OR a space separated list with not internal quotes (only quotes at beginning and end).
+	 * .getElementsByClassName
+	 * .classList.add
+	 * .classList.remove
+	 * .className
+	 * $ Only matches values with "."
+	 * jQuery Only matches values with "."
+	 * .addClass
+	 * .toggleClass
+	 * .removeClass
+	 * .attr This has a known bug. There is no way to differentiate the leading "class" from "id" in attr without look-behind, which javascript does not support. Therefore, all matches using this regex need to be filtered to remove results which are lists that have "id" as the first value.
+	 * .hasClass
+	 */
+	classList: /(?:\$|jQuery|(?:\.(?:getElementsByClassName|classList\.add|classList\.remove|className|jQuery|addClass|toggleClass|removeClass|attr|hasClass)))\s*[\(=]{1}\s*(["']{1}\.?-?[_a-zA-Z]+[_\w-]*(?:(?:(?:["']{1}\s*,\s*["']{1})|\s+){1}\.?-?[_a-zA-Z]+[_\w-]*)*["']{1})/,
+	/**
 	 * Builds a regular expression which will match a quoted string.
 	 *
 	 * @param name String of selector name
