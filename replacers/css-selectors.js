@@ -27,10 +27,10 @@ module.exports =  function(file) {
 		return match.replace(nameMatch, function(selector) {
 			switch (selectorType) {
 				case '.':
-					return classLibrary.get(selector, true).shortname;
+					return classLibrary.get(selector, true);
 					return
 				case '#':
-					return idLibrary.get(selector, true).shortname;
+					return idLibrary.get(selector, true);
 				default:
 					//probably don't touch something we don't understand
 					console.log('I just found this selector type and I\'m not sure what to do with it: '

@@ -18,10 +18,10 @@ module.exports = function (file) {
 			.replace(expressions.selectorName, function(selectorName) {
 				switch (attribute[0]) {
 					case 'class':
-						return classLibrary.get(selectorName).shortname;
+						return classLibrary.get(selectorName);
 					case 'id':
 					case 'for':
-						return idLibrary.get(selectorName).shortname;
+						return idLibrary.get(selectorName);
 					default:
 
 				}
