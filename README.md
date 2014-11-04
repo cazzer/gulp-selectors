@@ -1,4 +1,5 @@
-# gulp-mini-selectors (gms) [![Build Status][travis-image]][travis-url]
+# gulp-mini-selectors (gms)
+[![Build Status][travis-image]][travis-url][![Code Climate][cc-image]][cc-url][![Test Coverage][coverage-image]][coverage-url]
 
 > Minify those pesky selector names down to nothing with this fancy gulp plugin. Minified selectors will be applied consistently across all files piped into it.
 
@@ -82,3 +83,7 @@ libraries
 
 [travis-url]: https://travis-ci.org/calebthebrewer/gulp-mini-selectors
 [travis-image]: https://travis-ci.org/calebthebrewer/gulp-mini-selectors.svg?branch=master
+[cc-image]: https://codeclimate.com/github/calebthebrewer/gulp-mini-selectors/badges/gpa.svg
+[cc-url]: https://codeclimate.com/github/calebthebrewer/gulp-mini-selectors
+[coverage-image]: https://codeclimate.com/github/calebthebrewer/gulp-mini-selectors/badges/coverage.svg
+[coverage-url]: https://codeclimate.com/github/calebthebrewer/gulp-mini-selectors
