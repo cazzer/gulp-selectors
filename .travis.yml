@@ -2,4 +2,4 @@ language: node_js
 node_js:
   - 0.10
 after_script:
-  - cat ./coverage/lcov.info | codeclimate
+  - npm run test-report
