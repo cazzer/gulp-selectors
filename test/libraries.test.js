@@ -37,17 +37,47 @@ vows.describe('Libraries').addBatch({
 			assert.equal(topic, testLibrary.get('defined'));
 		}
 	},
-	'Calling get all': {
+	'Get all': {
 		topic: function() {
-			testLibrary.get('defined');
-			testLibrary.get('another');
-			return testLibrary.getAll();
+			libraries('get-all').get('defined');
+			libraries('get-all').get('another');
+			return libraries('get-all').getAll();
 		},
 		'should return all shortnames in the library' : function(topic) {
 			assert.deepEqual(topic, [
-				testLibrary.get('defined'),
-				testLibrary.get('another')
+				libraries('get-all').get('defined'),
+				libraries('get-all').get('another')
 			]);
+		}
+	},
+	'Get unused': {
+		topic: function() {
+			libraries('some-unused').get('defined');
+			libraries('some-unused').get('defined');
+			libraries('some-unused').get('unused');
+			return libraries('some-unused').getUnused();
+		},
+		'should return only unused shortnames': function(topic) {
+			assert.deepEqual(topic, [
+				libraries('some-unused').get('unused')
+			]);
+		}
+	},
+	'Size of an empty library': {
+		topic: function() {
+			return libraries('new').size();
+		},
+		'should be 0': function(topic) {
+			assert.equal(topic, 0);
+		}
+	},
+	'Size of a non empty library': {
+		topic: function() {
+			libraries('non-empty').get('defined');
+			return testLibrary.size();
+		},
+		'should be 1': function(topic) {
+			assert.equal(topic, 1);
 		}
 	}
 }).export(module);
