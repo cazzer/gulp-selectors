@@ -1,6 +1,6 @@
 var vows = require('vows'),
 	assert = require('assert'),
-	expressions = require('../utils/expressions');
+	expressions = require('../src/utils/expressions');
 
 vows.describe('Expressions: element attribute').addBatch({
 	'An id attribute': {

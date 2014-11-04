@@ -1,6 +1,6 @@
 var vows = require('vows'),
 	assert = require('assert'),
-	generateShortname = require('../utils/generate-shortname');
+	generateShortname = require('../src/utils/generate-shortname');
 
 vows.describe('Generating Shortnames').addBatch({
 	//standard cases

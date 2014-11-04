@@ -1,6 +1,6 @@
 var vows = require('vows'),
 	assert = require('assert'),
-	libraries = require('../utils/libraries');
+	libraries = require('../src/utils/libraries');
 
 var testLibrary = libraries('test');
 
@@ -44,7 +44,7 @@ vows.describe('Libraries').addBatch({
 			return testLibrary.getAll();
 		},
 		'should return all shortnames in the library' : function(topic) {
-			assert.equal(topic, [
+			assert.deepEqual(topic, [
 				testLibrary.get('defined'),
 				testLibrary.get('another')
 			]);

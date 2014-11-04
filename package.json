@@ -31,7 +31,8 @@
   "readmeFilename": "README.md",
   "devDependencies": {
     "vows": "~0.7.0",
-    "jscoverage": "~0.5.6"
+    "jscoverage": "~0.5.6",
+    "istanbul": "^0.3.2"
   },
   "scripts": {
     "test": "vows --spec"

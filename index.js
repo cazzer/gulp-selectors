@@ -1,8 +1,8 @@
 'use strict';
 var through = require('through2'),
-	replaceCssSelectors = require('./replacers/css-selectors'),
-	replaceHtmlAttributes = require('./replacers/html-attributes'),
-	replaceJsStrings = require('./replacers/js-strings');
+	replaceCssSelectors = require('./src/replacers/css-selectors'),
+	replaceHtmlAttributes = require('./src/replacers/html-attributes'),
+	replaceJsStrings = require('./src/replacers/js-strings');
 
 module.exports = function() {
 	/**
