@@ -1,6 +1,6 @@
 var vows = require('vows'),
 	assert = require('assert'),
-	libraries = require('../src/utils/libraries');
+	libraries = require('../lib/utils/libraries');
 
 var testLibrary = libraries('test');
 
