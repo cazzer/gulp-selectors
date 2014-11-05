@@ -1,9 +1,27 @@
 'use strict';
 var through = require('through2'),
-	replaceCssSelectors = require('./lib/replacers/css'),
-	replaceHtmlAttributes = require('./lib/replacers/html');
+	_ = require('lodash'),
+	processorUtils = require('./lib/utils/processor-utils'),
+	Library = require('./lib/utils/library');
 
-module.exports = function() {
+var classLibrary,
+	idLibrary;
+
+module.exports = {
+	minify: miniSelectors
+};
+
+function miniSelectors(processors, ignores) {
+	//initialize ignores
+	ignores = _.extend({classes: [], ids: []}, ignores);
+
+	//build new libraries to use
+	classLibrary = new Library(ignores.classes || []);
+	idLibrary = new Library(ignores.ids || []);
+
+	//ensure processor names are set as expected
+	processors = processorUtils.mapNames(processors);
+
 	/**
 	 * Main task for mini selectors uglify classes. Processes files based on type.
 	 *
@@ -14,24 +32,11 @@ module.exports = function() {
 	function miniSelectors(file, encoding, callback) {
 		var extensions = file.path.split('.'),
 			extension = extensions[extensions.length - 1],
-			fileString = String(file.contents),
-			reducedFile;
+			reducedFile = String(file.contents);
 
-		switch (extension) {
-			case 'css':
-				reducedFile = replaceCssSelectors(fileString);
-				break;
-			case 'html':
-				reducedFile = replaceHtmlAttributes(fileString);
-				break;
-			case 'js':
-				reducedFile = replaceJsStrings(fileString);
-				break;
-			default:
-				reducedFile = fileString;
-				console.log('Filetype not supported: ' + extension + ', ignoring');
-				break;
-		}
+		processorUtils.getForExtension(processors, extension).forEach(function(processor) {
+			reducedFile = processor(reducedFile, classLibrary, idLibrary);
+		});
 
 		file.contents = new Buffer(reducedFile);
 		this.push(file);
@@ -39,4 +44,4 @@ module.exports = function() {
 	}
 
 	return through.obj(miniSelectors);
-};
+}

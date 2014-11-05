@@ -1,12 +1,12 @@
 var vows = require('vows'),
 	assert = require('assert'),
-	libraries = require('../lib/utils/libraries');
+	Library = require('../lib/utils/library');
 
-var testLibrary = libraries('test');
+var testLibrary = new Library();
 
 vows.describe('Libraries').addBatch({
 	'Calling the module with a new string': {
-		topic: libraries('library'),
+		topic: new Library(),
 		'should give us a new library to play with': function(topic) {
 			//this one is here to make sure the API is intact
 			assert(topic.has);
@@ -39,33 +39,35 @@ vows.describe('Libraries').addBatch({
 	},
 	'Get all': {
 		topic: function() {
-			libraries('get-all').get('defined');
-			libraries('get-all').get('another');
-			return libraries('get-all').getAll();
+			var library = new Library();
+			library.get('defined');
+			library.get('another');
+			return library;
 		},
 		'should return all shortnames in the library' : function(topic) {
-			assert.deepEqual(topic, [
-				libraries('get-all').get('defined'),
-				libraries('get-all').get('another')
+			assert.deepEqual(topic.getAll(), [
+				topic.get('defined'),
+				topic.get('another')
 			]);
 		}
 	},
 	'Get unused': {
 		topic: function() {
-			libraries('some-unused').get('defined');
-			libraries('some-unused').get('defined');
-			libraries('some-unused').get('unused');
-			return libraries('some-unused').getUnused();
+			var library = new Library();
+			library.get('defined');
+			library.get('defined');
+			library.get('unused');
+			return library;
 		},
 		'should return only unused shortnames': function(topic) {
-			assert.deepEqual(topic, [
-				libraries('some-unused').get('unused')
+			assert.deepEqual(topic.getUnused(), [
+				topic.get('unused')
 			]);
 		}
 	},
 	'Size of an empty library': {
 		topic: function() {
-			return libraries('new').size();
+			return new Library().size();
 		},
 		'should be 0': function(topic) {
 			assert.equal(topic, 0);
@@ -73,11 +75,21 @@ vows.describe('Libraries').addBatch({
 	},
 	'Size of a non empty library': {
 		topic: function() {
-			libraries('non-empty').get('defined');
-			return testLibrary.size();
+			var library = new Library();
+			library.get('defined');
+			return library.size();
 		},
 		'should be 1': function(topic) {
 			assert.equal(topic, 1);
+		}
+	},
+	'Adding ignored entries': {
+		topic: function() {
+			var library = new Library(['ignored']);
+			return library.get('ignored');
+		},
+		'should return the full name': function(topic) {
+			assert.equal(topic, 'ignored');
 		}
 	}
 }).export(module);
