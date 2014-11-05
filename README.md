@@ -1,5 +1,5 @@
 # gulp-mini-selectors (gms)
-[![Build Status][travis-image]][travis-url][![Code Climate][cc-image]][cc-url][![Test Coverage][coverage-image]][coverage-url]
+[![Build Status][travis-image]][travis-url] [![Code Climate][cc-image]][cc-url] [![Test Coverage][coverage-image]][coverage-url]
 
 > Minify those pesky selector names down to nothing with this fancy gulp plugin. Minified selectors will be applied consistently across all files piped into it.
 
