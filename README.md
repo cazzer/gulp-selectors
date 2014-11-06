@@ -6,8 +6,8 @@
 ## Usage
 
 ```js
-var gulp    = require('gulp');
-var gs     = require('gulp-selectors');
+var gulp	= require('gulp');
+var gs		= require('gulp-selectors');
 
 gulp.src(['src/**/*.css', 'src/**/*.html'])
     .pipe(gs.run())
@@ -87,5 +87,5 @@ libraries
 [cc-url]: https://codeclimate.com/github/calebthebrewer/gulp-selectors
 [coverage-image]: https://codeclimate.com/github/calebthebrewer/gulp-selectors/badges/coverage.svg
 [coverage-url]: https://codeclimate.com/github/calebthebrewer/gulp-selectors
-[npm-image]: http://img.shields.io/npm/v/gh-badges.svg
+[npm-image]: https://badge.fury.io/js/gulp-selectors.svg
 [npm-url]: http://badge.fury.io/js/gulp-selectors
