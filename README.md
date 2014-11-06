@@ -7,14 +7,14 @@
 
 ```js
 var gulp    = require('gulp');
-var gms     = require('gulp-mini-selectors');
+var gs     = require('gulp-selectors');
 
 gulp.src(['src/**/*.css', 'src/**/*.html'])
-    .pipe(gms())
+    .pipe(gs.run())
     .pipe(gulp.dest('dist'));
 ```
 
-CSS and HTML files are handled well by default, just pass in your glob of files and all classes and IDs will be reduced to a minified form. Of course you can use it for some more specific functions if you like. See the included sample gulpfile for a full example of how to effectively use gms in your gulp workflow.
+CSS and HTML files are handled well by default, just pass in your glob of files and all classes and IDs will be reduced to a minified form. Of course you can use it for some more specific functions if you like. See the included sample gulpfile for a full example of how to effectively use gs in your gulp workflow.
 
 ### Advanced Usage
 
@@ -28,7 +28,7 @@ var processors: {
         classes: ['hidden', 'active']   // ignore these class selectors
     };
 
-gms(processors, ignores);
+gs.run(processors, ignores);
 ```
 
 Two processors are built in for your convenience, `css` and `html`. By the power of `regex` they will replace all conventional uses of selectors in your stylesheets and pages respectively.
@@ -36,13 +36,13 @@ Two processors are built in for your convenience, `css` and `html`. By the power
 - css: matches .selectors and #selectors
 - html: matches id="selector"s, class="selector"s, and for="selector"s
 
-Since `js-strings` isn't built in gms will attempt to `require` it; if it is not available an error will be thrown.
+Since `js-strings` isn't built in gs will attempt to `require` it; if it is not available an error will be thrown.
 
 The ignore object can contain two parameters: `ids` and `classes`, each of which are an array of selectors which will not be minified by *any* processor.
 
-## How gms works
+## How gs works
 
-Calling `gms()` builds a library which persists only for the duration of the call, all subsequent calls will create new libraries. Processors are run on all associated files and all selectors, besides those that have been ignored, will be minified.
+Calling `gs.run()` builds a library which persists for all processors used in the call. Processors are run on all associated files and all selectors, besides those that have been ignored, will be minified.
 
 ### Processors
 
