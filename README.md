@@ -1,5 +1,5 @@
 # gulp-selectors (gms)
-[![Build Status][travis-image]][travis-url] [![Code Climate][cc-image]][cc-url] [![Test Coverage][coverage-image]][coverage-url]
+[![Build Status][travis-image]][travis-url] [![Code Climate][cc-image]][cc-url] [![Test Coverage][coverage-image]][coverage-url] [![NPM Version][npm-image]][npm-url]
 
 > Minify those pesky selector names down to nothing with this fancy gulp plugin. Minified selectors will be applied consistently across all files piped into it.
 
@@ -87,3 +87,5 @@ libraries
 [cc-url]: https://codeclimate.com/github/calebthebrewer/gulp-selectors
 [coverage-image]: https://codeclimate.com/github/calebthebrewer/gulp-selectors/badges/coverage.svg
 [coverage-url]: https://codeclimate.com/github/calebthebrewer/gulp-selectors
+[npm-image]: http://img.shields.io/npm/v/gh-badges.svg
+[npm-url]: https://npmjs.org/package/gulp-selectors
