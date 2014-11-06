@@ -1,6 +1,6 @@
 var vows = require('vows'),
 	assert = require('assert'),
-	expressions = require('../lib/utils/expressions');
+	expressions = require('../../lib/utils/expressions');
 
 vows.describe('Expressions: js string selectors').addBatch({
 	'An custom selector with a present name': {
