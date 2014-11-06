@@ -88,4 +88,4 @@ libraries
 [coverage-image]: https://codeclimate.com/github/calebthebrewer/gulp-selectors/badges/coverage.svg
 [coverage-url]: https://codeclimate.com/github/calebthebrewer/gulp-selectors
 [npm-image]: http://img.shields.io/npm/v/gh-badges.svg
-[npm-url]: https://npmjs.org/package/gulp-selectors
+[npm-url]: http://badge.fury.io/js/gulp-selectors
