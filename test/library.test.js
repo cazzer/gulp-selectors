@@ -91,5 +91,16 @@ vows.describe('Libraries').addBatch({
 		'should return the full name': function(topic) {
 			assert.equal(topic, 'ignored');
 		}
+	},
+	'Setting dontCount to true': {
+		topic: function() {
+			var library = new Library();
+			library.get('defined');
+			library.get('defined', true);
+			return library.getUnused().length;
+		},
+		'should leave the selector as unused': function(topic) {
+			assert.deepEqual(topic, 1)
+		}
 	}
 }).export(module);
