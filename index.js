@@ -8,10 +8,10 @@ var classLibrary,
 	idLibrary;
 
 module.exports = {
-	minify: miniSelectors
+	minify: minify
 };
 
-function miniSelectors(processors, ignores) {
+function minify(processors, ignores) {
 	//initialize ignores
 	ignores = _.extend({classes: [], ids: []}, ignores);
 
