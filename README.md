@@ -81,9 +81,9 @@ libraries
 ```
 
 
-[travis-url]: https://travis-ci.org/calebthebrewer/gulp-mini-selectors
-[travis-image]: https://travis-ci.org/calebthebrewer/gulp-mini-selectors.svg?branch=master
-[cc-image]: https://codeclimate.com/github/calebthebrewer/gulp-mini-selectors/badges/gpa.svg
-[cc-url]: https://codeclimate.com/github/calebthebrewer/gulp-mini-selectors
-[coverage-image]: https://codeclimate.com/github/calebthebrewer/gulp-mini-selectors/badges/coverage.svg
-[coverage-url]: https://codeclimate.com/github/calebthebrewer/gulp-mini-selectors
+[travis-url]: https://travis-ci.org/calebthebrewer/gulp-selectors
+[travis-image]: https://travis-ci.org/calebthebrewer/gulp-selectors.svg?branch=master
+[cc-image]: https://codeclimate.com/github/calebthebrewer/gulp-selectors/badges/gpa.svg
+[cc-url]: https://codeclimate.com/github/calebthebrewer/gulp-selectors
+[coverage-image]: https://codeclimate.com/github/calebthebrewer/gulp-selectors/badges/coverage.svg
+[coverage-url]: https://codeclimate.com/github/calebthebrewer/gulp-selectors
