@@ -20,7 +20,8 @@
     "minify",
     "css",
     "selectors",
-    "styles"
+    "styles",
+    "compress"
   ],
   "license": "MIT",
   "main": "index.js",
