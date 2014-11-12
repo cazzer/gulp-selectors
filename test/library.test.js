@@ -56,7 +56,7 @@ vows.describe('Libraries').addBatch({
 			var library = new Library();
 			library.get('defined');
 			library.get('defined');
-			library.get('unused');
+			library.get('unused', true);
 			return library;
 		},
 		'should return only unused shortnames': function(topic) {
@@ -95,7 +95,6 @@ vows.describe('Libraries').addBatch({
 	'Setting dontCount to true': {
 		topic: function() {
 			var library = new Library();
-			library.get('defined');
 			library.get('defined', true);
 			return library.getUnused().length;
 		},
