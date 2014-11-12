@@ -3,38 +3,38 @@ var vows = require('vows'),
 	utils = require('../lib/utils/processor-utils');
 
 var testProcessors = {
-		css: ['css', 'html', 'js'],
-		html: ['js']
+		css: ['html', 'js']
 	},
-	mappedProcessors = utils.mapNames(testProcessors);
+	mappedProcessors = utils.extendDefaults(testProcessors);
 
 vows.describe('Processor utilities').addBatch({
-	'Mapping processor names with an empty argument': {
-		topic: utils.mapNames(),
-		'should return css and html default mapped to the local modules': function(topic) {
+	'Extending defaults names with an empty argument': {
+		topic: utils.extendDefaults(),
+		'should return css and html default processors': function(topic) {
 			assert.deepEqual(topic, {
-				css: false,
-				html: false,
-				'../replacers/css': ['css'],
-				'../replacers/html': ['html']
+				css: ['css'],
+				html: ['html']
 			});
 		}
 	},
-	'Mapping processor names with redefined css arguments': {
-		topic: utils.mapNames(testProcessors),
+	'Extending defaults names with redefined css arguments': {
+		topic: utils.extendDefaults(testProcessors),
 		'should return different css values': function(topic) {
-			assert.deepEqual(topic['../replacers/css'], ['css', 'html', 'js']);
+			assert.deepEqual(topic, {
+				css: ['html', 'js'],
+				html: ['html']
+			});
 		}
 	},
-	'Mapping processor names with a random argument': {
-		topic: utils.mapNames({'js-strings': ['js']}),
+	'Extending defaults names with a random argument': {
+		topic: utils.extendDefaults({'js-strings': ['js']}),
 		'should return that random argument': function(topic) {
 			assert.deepEqual(topic['js-strings'], ['js']);
 		}
 	},
-	'Gettings processors for an extension': {
+	'Getting processors for an extension': {
 		topic: function() {
-			return utils.getForExtension(mappedProcessors, 'css');
+			return utils.getForExtension(mappedProcessors, 'js');
 		},
 		'should return the module for that extension': function(topic) {
 			assert.deepEqual(topic, [
@@ -42,21 +42,11 @@ vows.describe('Processor utilities').addBatch({
 			]);
 		}
 	},
-	'Gettings processors for a different extension': {
+	'Getting processors for an extension with multiple processors': {
 		topic: function() {
 			return utils.getForExtension(mappedProcessors, 'html');
 		},
-		'should return the other module for that extension': function(topic) {
-			assert.deepEqual(topic, [
-				require('../lib/replacers/css')
-			]);
-		}
-	},
-	'Gettings processors extensions with multiple processors': {
-		topic: function() {
-			return utils.getForExtension(mappedProcessors, 'js');
-		},
-		'should return all the processors': function(topic) {
+		'should return all processors in the correct order': function(topic) {
 			assert.deepEqual(topic, [
 				require('../lib/replacers/css'),
 				require('../lib/replacers/html')

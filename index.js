@@ -20,7 +20,7 @@ function run(processors, ignores) {
 	idLibrary = new Library(ignores.ids || []);
 
 	//ensure processor names are set as expected
-	processors = processorUtils.mapNames(processors);
+	processors = processorUtils.extendDefaults(processors);
 
 	/**
 	 * Main task for mini selectors uglify classes. Processes files based on type.
