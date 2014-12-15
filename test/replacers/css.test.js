@@ -33,5 +33,14 @@ vows.describe('CSS Replacer').addBatch({
 
 			assert.equal(minified, '.a{color:#eee;}.b{color:#666}')
 		}
+	},
+	'A file extension in a stylesheet': {
+		topic: '.selector{background: url(file.extension);}',
+		'should not be matched': function(topic) {
+			var classLibrary = new Library(),
+				minified = css(topic, classLibrary);
+
+			assert.equal(minified, '.a{background: url(file.extension);}');
+		}
 	}
 }).export(module);
