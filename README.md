@@ -3,6 +3,8 @@
 
 > Minify those pesky selector names down to nothing with this fancy gulp plugin. Minified selectors will be applied consistently across all files piped into it.
 
+*You're like: `.some-super-descriptive-selector-name {...}`, and it's like: `.a {...}`*
+
 ## Usage
 
 ```js
