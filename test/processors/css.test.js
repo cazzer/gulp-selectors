@@ -1,6 +1,6 @@
 var vows = require('vows'),
 	assert = require('assert'),
-	css = require('../../lib/replacers/css'),
+	css = require('../../lib/processors/css'),
 	Library = require('../../lib/utils/library');
 
 vows.describe('CSS Replacer').addBatch({

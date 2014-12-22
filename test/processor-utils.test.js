@@ -38,7 +38,7 @@ vows.describe('Processor utilities').addBatch({
 		},
 		'should return the module for that extension': function(topic) {
 			assert.deepEqual(topic, [
-				require('../lib/replacers/css')
+				require('../lib/processors/css')
 			]);
 		}
 	},
@@ -48,8 +48,8 @@ vows.describe('Processor utilities').addBatch({
 		},
 		'should return all processors in the correct order': function(topic) {
 			assert.deepEqual(topic, [
-				require('../lib/replacers/css'),
-				require('../lib/replacers/html')
+				require('../lib/processors/css'),
+				require('../lib/processors/html')
 			]);
 		}
 	}

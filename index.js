@@ -1,6 +1,5 @@
 'use strict';
-var through = require('through2'),
-	es = require('event-stream'),
+var es = require('event-stream'),
 	_ = require('lodash'),
 	utils = require('gulp-util'),
 	processorUtils = require('./lib/utils/processor-utils'),
@@ -29,11 +28,10 @@ function run(processors, ignores) {
 	/**
 	 * Main task for mini selectors uglify classes. Processes files based on type.
 	 *
-	 * @param file Stream from through2
-	 * @param encoding
-	 * @param callback for through2
+	 * @param file Stream from es.map
+	 * @param callback for es.map
 	 */
-	function miniSelectors(file, encoding, callback) {
+	function miniSelectors(file, callback) {
 		var extensions = file.path.split('.'),
 			extension = extensions[extensions.length - 1],
 			reducedFile = String(file.contents);
@@ -43,11 +41,10 @@ function run(processors, ignores) {
 		});
 
 		file.contents = new Buffer(reducedFile);
-		this.push(file);
-		callback();
+		callback(null, file);
 	}
 
-	return through.obj(miniSelectors);
+	return es.map(miniSelectors);
 }
 
 function info() {
@@ -57,6 +54,6 @@ function info() {
 		utils.log('ID library:');
 		utils.log(idLibrary.stats());
 
-		callback();
+		callback(null, file);
 	});
 }

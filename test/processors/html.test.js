@@ -1,6 +1,6 @@
 var vows = require('vows'),
 	assert = require('assert'),
-	html = require('../../lib/replacers/html'),
+	html = require('../../lib/processors/html'),
 	Library = require('../../lib/utils/library');
 
 vows.describe('HTML Replacer').addBatch({

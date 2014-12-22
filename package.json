@@ -1,7 +1,7 @@
 {
   "name": "gulp-selectors",
   "description": "Minify CSS selectors.",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "author": {
     "name": "Caleb Brewer",
     "email": "calebthebrewer@gmail.com"
@@ -10,8 +10,7 @@
     "event-stream": "~3.1.7",
     "gulp-util": "~3.0.1",
     "lodash": "~2.4.1",
-    "multimatch": "^1.0.1",
-    "through2": ">=0.6.1 <1.0.0-0"
+    "multimatch": "^1.0.1"
   },
   "homepage": "https://github.com/calebthebrewer/gulp-selectors",
   "bugs": "https://github.com/calebthebrewer/gulp-selectors/issues",
