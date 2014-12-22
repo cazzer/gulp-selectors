@@ -1,4 +1,4 @@
-# gulp-selectors (gs)
+# gulp-selectors
 [![Build Status][travis-image]][travis-url] [![Code Climate][cc-image]][cc-url] [![Test Coverage][coverage-image]][coverage-url] [![NPM Version][npm-image]][npm-url]
 
 > Minify those pesky selector names down to nothing with this fancy gulp plugin. Minified selectors will be applied consistently across all files piped into it.
@@ -23,7 +23,7 @@ You can also pass some options into run:
 
 ` gs.run(processors, ignores)`
 
-CSS and HTML files are processed well by default, just pass in your glob of files and all classes and IDs will be reduced to a minified form. Of course you can use it for some more specific functions if you like. See the included [sample gulpfile](https://github.com/calebthebrewer/gulp-selectors/blob/master/test/demo/gulpfile.js) for a full example of how to effectively use gs in your gulp workflow.
+CSS and HTML files are processed well by default, just pass in your glob of files and all classes and IDs will be reduced to a minified form. Of course you can use it for some more specific functions if you like. See the included [sample gulpfile](https://github.com/calebthebrewer/gulp-selectors/blob/master/test/demo/gulpfile.js) for a full example of how to effectively use gulp-selectors in your gulp workflow.
 
 ### Defaults
 
@@ -63,7 +63,7 @@ Two processors are built in for your convenience: `css` and `html` are stable bu
 
 If a processor is listed which isn't built in, gulp-selectors will attempt to `require` it.
 
-## How gs works
+## How gulp-selectors works
 
 Calling `gs.run()` builds a library which persists for all processors used in the call. Processors are run on all associated files and all selectors, besides those that have been ignored, will be minified.
 
