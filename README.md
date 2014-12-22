@@ -18,7 +18,7 @@ You can also pass some options into run:
 
 ` gs.run(processors, ignores)`
 
-CSS and HTML files are processed well by default, just pass in your glob of files and all classes and IDs will be reduced to a minified form. Of course you can use it for some more specific functions if you like. See the included sample gulpfile for a full example of how to effectively use gs in your gulp workflow.
+CSS and HTML files are processed well by default, just pass in your glob of files and all classes and IDs will be reduced to a minified form. Of course you can use it for some more specific functions if you like. See the included [sample gulpfile](https://github.com/calebthebrewer/gulp-selectors/blob/master/test/demo/gulpfile.js) for a full example of how to effectively use gs in your gulp workflow.
 
 ### Defaults
 
