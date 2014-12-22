@@ -7,6 +7,9 @@
 
 ## Usage
 
+First and foremost:
+`npm install gulp-selectors`
+
 ```js
 var gulp	= require('gulp');
 var gs		= require('gulp-selectors');
