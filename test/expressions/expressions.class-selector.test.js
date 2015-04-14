@@ -15,6 +15,12 @@ vows.describe('Expressions: class selectors').addBatch({
 			assert.equal(topic.length, 2);
 		}
 	},
+	'An url selector': {
+		topic: 'url(\'foobar.selector\')'.match(expressions.classSelector),
+		'should not return a match': function(topic) {
+			assert.equal(topic, null);
+		}
+	},
 	'A pseudo selector': {
 		topic: ':hover'.match(expressions.classSelector),
 		'should not return a match': function(topic) {
