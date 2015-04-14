@@ -48,7 +48,7 @@ var processors: {
     },
     ignores: {
         classes: ['hidden', 'active']   // ignore these class selectors,
-        id: false                       //don't touch IDs
+        ids: '*'                        // ignore all IDs
     };
 
 gs.run(processors, ignores);
