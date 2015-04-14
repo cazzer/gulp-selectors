@@ -49,11 +49,9 @@ function run(processors, ignores) {
 
 function info() {
 	return es.map(function(file, callback) {
-		utils.log('Class library:');
-		utils.log(classLibrary.stats());
-		utils.log('ID library:');
-		utils.log(idLibrary.stats());
-
+		utils.log(file.history[0]);
+		utils.log('Class library:', classLibrary.stats());
+		utils.log('ID library:', idLibrary.stats());
 		callback(null, file);
 	});
 }
