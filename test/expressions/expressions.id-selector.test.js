@@ -9,6 +9,12 @@ vows.describe('Expressions: selector').addBatch({
 			assert.equal(topic.length, 1);
 		}
 	},
+	'A compressed id selector': {
+		topic: '#selector{'.match(expressions.idSelector),
+		'should return a match': function(topic) {
+			assert.equal(topic.length, 1);
+		}
+	},
 	'A hash value': {
 		topic: '#e6e6e6;'.match(expressions.idSelector),
 		'should return a match which include the semicolon': function(topic) {
