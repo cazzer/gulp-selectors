@@ -9,6 +9,18 @@ vows.describe('Expressions: selector').addBatch({
 			assert.equal(topic.length, 1);
 		}
 	},
+	'An uncommon id selector': {
+		topic: '[id=selector] {'.match(expressions.idSelector),
+		'should return a match': function(topic) {
+			assert.equal(topic.length, 1);
+		}
+	},
+	'An uncommon extended id selector': {
+		topic: '[id*=selector] {'.match(expressions.idSelector),
+		'should return a match': function(topic) {
+			assert.equal(topic.length, 1);
+		}
+	},
 	'A compressed id selector': {
 		topic: '#selector{'.match(expressions.idSelector),
 		'should return a match': function(topic) {
