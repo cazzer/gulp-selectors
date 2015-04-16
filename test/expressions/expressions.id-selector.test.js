@@ -17,8 +17,8 @@ vows.describe('Expressions: selector').addBatch({
 	},
 	'A hash value': {
 		topic: '#e6e6e6;'.match(expressions.idSelector),
-		'should return a match which include the semicolon': function(topic) {
-			assert.equal(topic[0], '#e6e6e6;');
+		'should not return a match': function(topic) {
+			assert.equal(topic, null);
 		}
 	},
 	'A string beginning with a number': {
