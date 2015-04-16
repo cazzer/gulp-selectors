@@ -9,6 +9,18 @@ vows.describe('Expressions: class selectors').addBatch({
 			assert.equal(topic.length, 1);
 		}
 	},
+	'An uncommon class selector': {
+		topic: '[class=selector] {'.match(expressions.classSelector),
+		'should return a match': function(topic) {
+			assert.equal(topic.length, 1);
+		}
+	},
+	'An uncommon extended class selector': {
+		topic: '[class*=selector] {'.match(expressions.classSelector),
+		'should return a match': function(topic) {
+			assert.equal(topic.length, 1);
+		}
+	},
 	'Nested class selectors': {
 		topic: '.selector .child {'.match(expressions.classSelector),
 		'should return two matches': function(topic) {
