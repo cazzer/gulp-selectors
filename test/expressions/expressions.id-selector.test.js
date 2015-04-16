@@ -21,12 +21,6 @@ vows.describe('Expressions: selector').addBatch({
 			assert.equal(topic[0], '#e6e6e6;');
 		}
 	},
-	'A hash value': {
-		topic: '#e6e6e6}'.match(expressions.idSelector),
-		'should return a match which include the close bracket': function(topic) {
-			assert.equal(topic[0], '#e6e6e6}');
-		}
-	},
 	'A string beginning with a number': {
 		topic: '#666 {'.match(expressions.idSelector),
 		'should not return a match': function(topic) {
