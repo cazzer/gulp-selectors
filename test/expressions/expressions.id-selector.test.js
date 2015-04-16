@@ -21,6 +21,12 @@ vows.describe('Expressions: selector').addBatch({
 			assert.equal(topic, null);
 		}
 	},
+	'An id with a pseudo selector': {
+		topic: '#selector:hover {'.match(expressions.classSelector),
+		'should return one match': function(topic) {
+			assert.equal(topic.length, 1);
+		}
+	},
 	'A string beginning with a number': {
 		topic: '#666 {'.match(expressions.idSelector),
 		'should not return a match': function(topic) {
