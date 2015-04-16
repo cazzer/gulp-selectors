@@ -4,7 +4,7 @@ var vows = require('vows'),
 
 vows.describe('Expressions: selector').addBatch({
 	'An id selector': {
-		topic: '#selector'.match(expressions.idSelector),
+		topic: '#selector {'.match(expressions.idSelector),
 		'should return a match': function(topic) {
 			assert.equal(topic.length, 1);
 		}
@@ -22,13 +22,13 @@ vows.describe('Expressions: selector').addBatch({
 		}
 	},
 	'A string beginning with a number': {
-		topic: '#666'.match(expressions.idSelector),
+		topic: '#666 {'.match(expressions.idSelector),
 		'should not return a match': function(topic) {
 			assert.equal(topic, null);
 		}
 	},
 	'A string beginning with a weird character': {
-		topic: '#:selector'.match(expressions.idSelector),
+		topic: '#:selector {'.match(expressions.idSelector),
 		'should not return a match': function(topic) {
 			assert.equal(topic, null);
 		}
