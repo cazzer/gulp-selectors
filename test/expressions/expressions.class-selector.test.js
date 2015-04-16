@@ -21,6 +21,12 @@ vows.describe('Expressions: class selectors').addBatch({
 			assert.equal(topic, null);
 		}
 	},
+	'A class with a pseudo selector': {
+		topic: '.selector:hover {'.match(expressions.classSelector),
+		'should return one match': function(topic) {
+			assert.equal(topic.length, 1);
+		}
+	},
 	'A pseudo selector': {
 		topic: ':hover {'.match(expressions.classSelector),
 		'should not return a match': function(topic) {
