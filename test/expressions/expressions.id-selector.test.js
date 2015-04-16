@@ -22,7 +22,7 @@ vows.describe('Expressions: selector').addBatch({
 		}
 	},
 	'An id with a pseudo selector': {
-		topic: '#selector:hover {'.match(expressions.classSelector),
+		topic: '#selector:hover {'.match(expressions.idSelector),
 		'should return one match': function(topic) {
 			assert.equal(topic.length, 1);
 		}
