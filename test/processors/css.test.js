@@ -14,6 +14,15 @@ vows.describe('CSS Replacer').addBatch({
 			assert.equal(minified, '.a{property:value;}')
 		}
 	},
+	'A class name with an ignore': {
+		topic: '.a{color: red;} .cat{color:blue}',
+		'should not redefine other classes with the ignored class name': function(topic) {
+			var classLibrary = new Library(['a']),
+				minified = css(topic, classLibrary);
+
+			assert.equal(minified, '.a{color: red;} .b{color:blue}');
+		}
+	},
 	'An id name': {
 		topic: '#hello-selector{property:value;}',
 		'should be minified': function(topic) {

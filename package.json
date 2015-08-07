@@ -1,7 +1,7 @@
 {
   "name": "gulp-selectors",
   "description": "Minify CSS selectors.",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "author": {
     "name": "Caleb Brewer",
     "email": "calebthebrewer@gmail.com"
