@@ -27,8 +27,8 @@ CSS and HTML files are processed well by default, just pass in your glob of file
 
 ### Defaults
 
-All arguments are options. If omitted, processors will default to `css` and `html` and ignores 
-will be empty;
+All arguments are optional. If omitted, processors will default to `css` and `html` and ignores
+will be empty:
 
 ```js
 gs.run({
