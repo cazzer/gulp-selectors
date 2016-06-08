@@ -38,5 +38,11 @@ vows.describe('Expressions: element attribute').addBatch({
 		'should return a match': function(topic) {
 			assert.equal(topic.length, 1);
 		}
+	},
+	'An aria-labelledby attribute': {
+		topic: 'aria-labelledby="selector"'.match(expressions.elementAttribute),
+		'should return a match': function(topic) {
+			assert.equal(topic.length, 1);
+		}
 	}
 }).export(module);
