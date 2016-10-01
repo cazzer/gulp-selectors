@@ -5,53 +5,69 @@ var es = require('event-stream'),
 	processorUtils = require('./lib/utils/processor-utils'),
 	Library = require('./lib/utils/library');
 
-var classLibrary,
-	idLibrary;
+var processor;
 
 module.exports = {
 	run: run,
 	minify: run,
-	info: info
+	info: info,
+	create: create
 };
 
-function run(processors, ignores) {
-	//initialize ignores
-	ignores = _.extend({classes: [], ids: []}, ignores);
+class Processor {
+	constructor(processors, ignores) {
+		this.ignores = _.extend({classes: [], ids: []}, ignores);
 
-	//ensure processor names are set as expected
-	processors = processorUtils.extendDefaults(processors);
+		//ensure processor names are set as expected
+		this.processors = processorUtils.extendDefaults(processors);
 
-	//build new libraries to use
-	classLibrary = new Library(ignores.classes || []);
-	idLibrary = new Library(ignores.ids || []);
-
-	/**
-	 * Main task for mini selectors uglify classes. Processes files based on type.
-	 *
-	 * @param file Stream from es.map
-	 * @param callback for es.map
-	 */
-	function miniSelectors(file, callback) {
-		var extensions = file.path.split('.'),
-			extension = extensions[extensions.length - 1],
-			reducedFile = String(file.contents);
-
-		processorUtils.getForExtension(processors, extension).forEach(function(processor) {
-			reducedFile = processor(reducedFile, classLibrary, idLibrary);
-		});
-
-		file.contents = new Buffer(reducedFile);
-		callback(null, file);
+		//build new libraries to use
+		this.classLibrary = new Library(this.ignores.classes || []);
+		this.idLibrary = new Library(this.ignores.ids || []);
 	}
 
-	return es.map(miniSelectors);
+	run() {
+		/**
+		 * Main task for mini selectors uglify classes. Processes files based on type.
+		 *
+		 * @param file Stream from es.map
+		 * @param callback for es.map
+		 */
+		var miniSelectors = (file, callback) => {
+			var extensions = file.path.split('.'),
+				extension = extensions[extensions.length - 1],
+				reducedFile = String(file.contents);
+
+			processorUtils.getForExtension(this.processors, extension).forEach((processor) => {
+				reducedFile = processor(reducedFile, this.classLibrary, this.idLibrary);
+			});
+
+			file.contents = new Buffer(reducedFile);
+			callback(null, file);
+		}
+
+		return es.map(miniSelectors);
+	}
+
+	info() {
+		return es.map((file, callback) => {
+			utils.log(file.history[0]);
+			utils.log('Class library:', this.classLibrary.stats());
+			utils.log('ID library:', this.idLibrary.stats());
+			callback(null, file);
+		});
+	}
+}
+
+function run(processors, ignores) {
+	processor = new Processor(processors, ignores);
+	return processor.run();
 }
 
 function info() {
-	return es.map(function(file, callback) {
-		utils.log(file.history[0]);
-		utils.log('Class library:', classLibrary.stats());
-		utils.log('ID library:', idLibrary.stats());
-		callback(null, file);
-	});
+	return processor.info();
+}
+
+function create(processors, ignores) {
+	return new Processor(processors, ignores);
 }
