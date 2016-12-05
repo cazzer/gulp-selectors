@@ -1,3 +1,6 @@
+# This project is looking for a maintainer
+I am no longer maintaining this repository and would be happy to transfer it to someone who still actively uses it. Respond to the [maintainer issue](https://github.com/cazzer/gulp-selectors/issues/26) if you are interested in taking ownership. In case you are interested, I use [css-modules](https://github.com/css-modules/css-modules) now instead.
+
 # gulp-selectors
 [![Build Status][travis-image]][travis-url] [![Code Climate][cc-image]][cc-url] [![Test Coverage][coverage-image]][coverage-url] [![NPM Version][npm-image]][npm-url]
 
