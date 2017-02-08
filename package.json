@@ -1,10 +1,10 @@
 {
   "name": "gulp-selectors",
   "description": "Minify CSS selectors.",
-  "version": "0.1.8",
+  "version": "0.1.10",
   "author": {
-    "name": "Caleb Brewer",
-    "email": "calebthebrewer@gmail.com"
+    "name": "Davis Miculis",
+    "email": "mindzhulis@gmail.com"
   },
   "dependencies": {
     "event-stream": "~3.1.7",
@@ -12,8 +12,8 @@
     "lodash": "~2.4.1",
     "multimatch": "^1.0.1"
   },
-  "homepage": "https://github.com/calebthebrewer/gulp-selectors",
-  "bugs": "https://github.com/calebthebrewer/gulp-selectors/issues",
+  "homepage": "https://github.com/davismiculis/gulp-selectors",
+  "bugs": "https://github.com/davismiculis/gulp-selectors/issues",
   "keywords": [
     "gulp",
     "gulpplugin",
@@ -28,7 +28,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/calebthebrewer/gulp-selectors.git"
+    "url": "https://github.com/davismiculis/gulp-selectors.git"
   },
   "readmeFilename": "README.md",
   "devDependencies": {
