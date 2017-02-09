@@ -2,15 +2,23 @@
   "name": "gulp-selectors",
   "description": "Minify CSS selectors.",
   "version": "0.1.10",
+  "license": "MIT",
+  "main": "index.js",
   "author": {
     "name": "Davis Miculis",
     "email": "mindzhulis@gmail.com"
   },
   "dependencies": {
-    "event-stream": "~3.1.7",
-    "gulp-util": "~3.0.1",
-    "lodash": "~2.4.1",
-    "multimatch": "^1.0.1"
+    "event-stream": "~3.3.4",
+    "gulp-util": "~3.0.8",
+    "lodash": "~4.17.4",
+    "multimatch": "~2.1.0"
+  },
+  "devDependencies": {
+    "gulp": "~3.9.1"
+  },
+  "scripts": {
+
   },
   "homepage": "https://github.com/davismiculis/gulp-selectors",
   "bugs": "https://github.com/davismiculis/gulp-selectors/issues",
@@ -22,26 +30,11 @@
     "css",
     "selectors",
     "styles",
-    "compress"
+    "compress",
+    "obfuscate"
   ],
-  "license": "MIT",
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/davismiculis/gulp-selectors.git"
-  },
-  "readmeFilename": "README.md",
-  "devDependencies": {
-    "vows": "~0.7.0",
-    "jscoverage": "~0.5.6",
-    "istanbul": "^0.3.2",
-    "codeclimate-test-reporter": "0.0.4",
-    "gulp": "~3.8.11"
-  },
-  "scripts": {
-    "test": "vows --spec",
-    "coverage": "istanbul cover ./node_modules/vows/bin/vows --spec",
-    "codeclimate": "cat ./coverage/lcov.info | codeclimate",
-    "test-report": "npm run coverage && npm run codeclimate"
   }
 }

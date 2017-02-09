@@ -1,8 +1,4 @@
-# This project is looking for a maintainer
-I am no longer maintaining this repository and would be happy to transfer it to someone who still actively uses it. Respond to the [maintainer issue](https://github.com/cazzer/gulp-selectors/issues/26) if you are interested in taking ownership. In case you are interested, I use [css-modules](https://github.com/css-modules/css-modules) now instead.
-
 # gulp-selectors
-[![Build Status][travis-image]][travis-url] [![Code Climate][cc-image]][cc-url] [![Test Coverage][coverage-image]][coverage-url] [![NPM Version][npm-image]][npm-url]
 
 > Minify those pesky selector names down to nothing with this fancy gulp plugin. Minified selectors will be applied consistently across all files piped into it.
 
@@ -13,7 +9,7 @@ Input                                   |   Output
 `#an-id { ... }`                        |`#a { ... }`
 `<div class="class-name"> ... </div>`   |`<div class="a"> ... </div>`
 
-*You're like: `.some-super-descriptive-selector-name {...}`, and it's like: `.a {...}`*
+*Converts `.some-super-descriptive-selector-name {...}` to `.a {...}`*
 
 ## Usage
 
@@ -33,7 +29,7 @@ You can also pass some options into run:
 
 ` gs.run(processors, ignores)`
 
-CSS and HTML files are processed well by default, just pass in your glob of files and all classes and IDs will be reduced to a minified form. Of course you can use it for some more specific functions if you like. See the included [sample gulpfile](https://github.com/calebthebrewer/gulp-selectors/blob/master/test/example/gulpfile.js) for a full example of how to effectively use gulp-selectors in your gulp workflow.
+CSS and HTML files are processed well by default, just pass in your glob of files and all classes and IDs will be reduced to a minified form. Of course you can use it for some more specific functions if you like.
 
 ### Defaults
 
@@ -112,13 +108,3 @@ libraries
     classes: ['hidden', 'active']
 }
 ```
-
-
-[travis-url]: https://travis-ci.org/calebthebrewer/gulp-selectors
-[travis-image]: https://travis-ci.org/calebthebrewer/gulp-selectors.svg?branch=master
-[cc-image]: https://codeclimate.com/github/calebthebrewer/gulp-selectors/badges/gpa.svg
-[cc-url]: https://codeclimate.com/github/calebthebrewer/gulp-selectors
-[coverage-image]: https://codeclimate.com/github/calebthebrewer/gulp-selectors/badges/coverage.svg
-[coverage-url]: https://codeclimate.com/github/calebthebrewer/gulp-selectors
-[npm-image]: https://badge.fury.io/js/gulp-selectors.svg
-[npm-url]: http://badge.fury.io/js/gulp-selectors
