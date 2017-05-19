@@ -29,22 +29,6 @@ vows.describe('Generating Shortnames').addBatch({
 		}
 	},
 	//edge cases
-	'A seed of -1': {
-		topic: function() {
-			generateShortname(-1)
-		},
-		'should throw an error': function(topic) {
-			assert.throws(topic, Error);
-		}
-	},
-	'A non numeric seed': {
-		topic: function() {
-			generateShortname('a')
-		},
-		'should throw an error': function(topic) {
-			assert.throws(topic, Error);
-		}
-	},
 	'A seed of 1234': {
 		topic: generateShortname(1234),
 		'should return the shortname "aum"': function(topic) {
